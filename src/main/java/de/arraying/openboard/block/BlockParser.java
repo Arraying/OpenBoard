@@ -1,0 +1,61 @@
+package de.arraying.openboard.block;
+
+import org.bukkit.configuration.file.FileConfiguration;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Copyright 2018 Arraying
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+public final class BlockParser {
+
+    private final FileConfiguration fileConfiguration;
+
+    /**
+     * Creates a new file configuration.
+     * @param fileConfiguration The file configuration.
+     */
+    public BlockParser(FileConfiguration fileConfiguration) {
+        this.fileConfiguration = fileConfiguration;
+    }
+
+    /**
+     * Gets an individual block from the path.
+     * @param path The path.
+     * @return The block.
+     */
+    public Block getIndividual(String path) {
+        return Block.of(fileConfiguration, "__individual", path + ".");
+    }
+
+    /**
+     * Gets a list of blocks from the path.
+     * @param path The path, null for root.
+     * @return The block.
+     */
+    public List<Block> getList(String path) {
+        List<Block> blocks = new ArrayList<>();
+        Set<String> keys = path == null ?
+                fileConfiguration.getKeys(false) :
+                fileConfiguration.getConfigurationSection(path).getKeys(false);
+        for(String key : keys) {
+            blocks.add(Block.of(fileConfiguration, key, String.format("%s.%s.", path == null ? "" : path, key)));
+        }
+        return blocks;
+    }
+
+}

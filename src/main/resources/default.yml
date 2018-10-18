@@ -1,0 +1,46 @@
+
+# .|''''|,                         '||'''|,                            ||`
+# ||    ||                          ||   ||                            ||
+# ||    || '||''|, .|''|, `||''|,   ||;;;;   .|''|,  '''|.  '||''| .|''||
+# ||    ||  ||  || ||..||  ||  ||   ||   ||  ||  || .|''||   ||    ||  ||
+# `|....|'  ||..|' `|...  .||  ||. .||...|'  `|..|' `|..||. .||.   `|..||.
+#           ||
+#          .||
+
+# Default scoreboard configuration.
+title:
+  values:
+  - '&c&lO&4&lpenBoar&c&ld'
+  - '&c&lOp&4&lenBoard'
+  - '&4&lO&c&lpe&4&lnBoard'
+  - '&4&lOp&c&len&4&lBoard'
+  - '&4&lOpe&c&lnB&4&loard'
+  - '&4&lOpen&c&lBo&4&lard'
+  - '&4&lOpenB&c&loa&4&lrd'
+  - '&4&lOpenBo&c&lar&4&ld'
+  - '&4&lOpenBoa&c&lrd'
+  refresh: 5
+  random: false
+lines:
+  header:
+    values:
+    - '&8&m----------------'
+    refresh: 100000
+    random: false
+  title:
+    values:
+    - '&cPlayer'
+    - '&cRank'
+    refresh: 40
+    random: false
+  value:
+    values:
+    - '&f%player_name%'
+    - '&f%vault_rank%'
+    refresh: 40
+    random: false
+  footer:
+    values:
+    - '&8&m----------------'
+    refresh: 100000
+    random: false

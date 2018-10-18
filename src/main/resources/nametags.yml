@@ -1,0 +1,22 @@
+
+# .|''''|,                         '||'''|,                            ||`
+# ||    ||                          ||   ||                            ||
+# ||    || '||''|, .|''|, `||''|,   ||;;;;   .|''|,  '''|.  '||''| .|''||
+# ||    ||  ||  || ||..||  ||  ||   ||   ||  ||  || .|''||   ||    ||  ||
+# `|....|'  ||..|' `|...  .||  ||. .||...|'  `|..|' `|..||. .||.   `|..||.
+#           ||
+#          .||
+
+# Nametag configuration.
+
+# This is how frequently nametags will update, in ticks (1 second = 20 ticks).
+refresh: 200
+
+# Here is where all the nametags are declared.
+# The permission for a player to have a nametag is openboard.nametag.<name> .
+# For example, the tag "admin" will require "openboard.nametag.admin".
+# The prefix and suffix have a 16 character limit, including colour codes (1.12).
+tags:
+  admin: # The name of the tag.
+    prefix: '&c[ADMIN] '
+    suffix: ' &6[STAFF]'

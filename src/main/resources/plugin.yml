@@ -1,0 +1,10 @@
+name: OpenBoard
+version: 0.1
+author: Arraying
+main: de.arraying.openboard.OpenBoard
+softdepend: [PlaceholderAPI]
+commands:
+  obreload:
+    aliases: [obr, openboardreload]
+    description: Reloads OpenBoard scoreboards and nametags.
+    usage: /obreload

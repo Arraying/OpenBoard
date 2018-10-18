@@ -1,0 +1,22 @@
+
+# .|''''|,                         '||'''|,                            ||`
+# ||    ||                          ||   ||                            ||
+# ||    || '||''|, .|''|, `||''|,   ||;;;;   .|''|,  '''|.  '||''| .|''||
+# ||    ||  ||  || ||..||  ||  ||   ||   ||  ||  || .|''||   ||    ||  ||
+# `|....|'  ||..|' `|...  .||  ||. .||...|'  `|..|' `|..||. .||.   `|..||.
+#           ||
+#          .||
+
+# Event configuration.
+# It is possible for certain scoreboards to get triggered at certain events, and this can be configured here.
+# Event configuration is slightly complex and limited however. There is no way to temporarily show scoreboards
+# for a set time period.
+# The configuration is defined such that the key is the full event class name, and that the value is the name
+# of the scoreboard to switch to. The class name's "." are replaced with " ". Please note that the event must be
+# a sub-class of "org.bukkit.event.player.PlayerEvent".
+
+# When the player joins the server.
+#org bukkit event player PlayerJoinEvent:
+#  give: welcome # Gives the scoreboard "welcome" to the player.
+#  for: 100 # Leaves the scoreboard for 100 ticks (set to -1 for infinity).
+#  then: default # The scoreboard to switch back to afterwards (remove this for infinity).
