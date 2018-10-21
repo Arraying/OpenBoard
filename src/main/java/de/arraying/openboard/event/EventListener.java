@@ -57,7 +57,7 @@ public final class EventListener implements Listener {
                             .replace(" ", "."));
                     Bukkit.getPluginManager().registerEvent(eventClass,
                             this,
-                            EventPriority.NORMAL,
+                            EventPriority.MONITOR,
                             new EventHandler(action),
                             getInstance());
                     getInstance().log("Listening to event %s.", eventClass.getSimpleName());
@@ -73,10 +73,10 @@ public final class EventListener implements Listener {
      * When a player joins.
      * @param event The event.
      */
-    @org.bukkit.event.EventHandler
+    @org.bukkit.event.EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        getInstance().getSboardManager().apply(player, DEFAULT_SCOREBOARD);
+        getInstance().getSboardManager().apply(player, DEFAULT_SCOREBOARD, false);
         getInstance().getNametagManager().display(player);
     }
 
@@ -84,7 +84,7 @@ public final class EventListener implements Listener {
      * When the player leaves.
      * @param event The event.
      */
-    @org.bukkit.event.EventHandler
+    @org.bukkit.event.EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerLeave(PlayerQuitEvent event) {
         getInstance().getSboardManager().unapply(event.getPlayer());
     }

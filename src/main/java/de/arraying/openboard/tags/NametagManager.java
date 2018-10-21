@@ -71,6 +71,9 @@ public final class NametagManager {
      * @param player The player to display the nametags to.
      */
     public void display(Player player) {
+        if(nametags.isEmpty()) {
+            return;
+        }
         Nametag selfNametag = getEffectiveNametag(player);
         for(Player online : Bukkit.getOnlinePlayers()) {
             Nametag otherNametag = getEffectiveNametag(online);

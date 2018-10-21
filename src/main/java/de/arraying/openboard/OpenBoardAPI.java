@@ -52,6 +52,7 @@ public final class OpenBoardAPI {
 
     /**
      * Sets the scoreboard for a specific player.
+     * This will force the board even if the player does not have permission.
      * @param player The player.
      * @param scoreboard The scoreboard name, without file extension.
      */
@@ -62,7 +63,7 @@ public final class OpenBoardAPI {
         if(scoreboard != null) {
             scoreboard = scoreboard.toLowerCase();
         }
-        OpenBoard.getInstance().getSboardManager().apply(player, scoreboard);
+        OpenBoard.getInstance().getSboardManager().apply(player, scoreboard, true);
     }
 
     /**

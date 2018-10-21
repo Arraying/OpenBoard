@@ -4,6 +4,7 @@ import de.arraying.openboard.OpenBoard;
 import de.arraying.openboard.OpenBoardAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerEvent;
@@ -44,6 +45,10 @@ final class EventHandler implements EventExecutor {
      */
     @Override
     public void execute(Listener listener, Event event) {
+        if(event instanceof Cancellable
+                && ((Cancellable) event).isCancelled()) {
+            return;
+        }
         Player player = ((PlayerEvent) event).getPlayer();
         OpenBoardAPI.setScoreboard(player, eventAction.getTargetScoreboard());
         if(eventAction.getTargetDuration() > 0) {

@@ -1,8 +1,9 @@
 name: OpenBoard
-version: 0.1
+version: 0.1.1
 author: Arraying
 main: de.arraying.openboard.OpenBoard
 softdepend: [PlaceholderAPI]
+website: 'https://github.com/Arraying/OpenBoard'
 commands:
   obreload:
     aliases: [obr, openboardreload]

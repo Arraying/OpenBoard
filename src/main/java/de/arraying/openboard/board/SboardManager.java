@@ -52,8 +52,8 @@ public final class SboardManager {
         }
         for(Map.Entry<Player, Sboard> set : this.boards.entrySet()) {
             set.getValue().destroy();
-            apply(set.getKey(), null);
-            apply(set.getKey(), DEFAULT_SCOREBOARD);
+            apply(set.getKey(), null, false);
+            apply(set.getKey(), DEFAULT_SCOREBOARD, false);
         }
     }
 
@@ -61,8 +61,9 @@ public final class SboardManager {
      * Applies a scoreboard to the player.
      * @param player The player.
      * @param name The name, null to reset.
+     * @param force If true, this will force the scoreboard even without permission.
      */
-    public void apply(Player player, String name) {
+    public void apply(Player player, String name, boolean force) {
         if(player == null
                 || !player.isOnline()) {
             return;
@@ -78,7 +79,7 @@ public final class SboardManager {
         }
         SboardTemplate template = templates.get(name);
         if(template == null
-                || !template.hasPermission(player)) {
+                || !(force || template.hasPermission(player))) {
             return;
         }
         Sboard board = template.create(player);
