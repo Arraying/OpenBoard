@@ -1,6 +1,7 @@
 package de.arraying.openboard.tags;
 
 import de.arraying.openboard.OpenBoard;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -71,6 +72,10 @@ final class Nametag {
         }
         team.setPrefix(prefix);
         team.setSuffix(suffix);
+        team.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.ALWAYS);
+        if(Bukkit.getVersion().contains("1.13")) {
+            team.setColor(fromPrefix(prefix));
+        }
         team.addEntry(target.getName());
     }
 
@@ -81,5 +86,29 @@ final class Nametag {
     private String getEffectiveName() {
         return OpenBoard.ID_PREFIX_NAMETAG + name;
     }
+
+
+    /**
+     * Gets the last chat/formatting code from the prefix.
+     * @param prefix The prefix.
+     * @return The chat colour.
+     */
+    private ChatColor fromPrefix(String prefix) {
+        char colour = 0;
+        char[] chars = prefix.toCharArray();
+        for(int i = 0; i < chars.length; i++) {
+            char at = chars[i];
+            if((at == '§'
+                    || at == '&')
+                    && i + 1 < chars.length) {
+                char code = chars[i + 1];
+                if(ChatColor.getByChar(code) != null) {
+                    colour = code;
+                }
+            }
+        }
+        return colour == 0 ? ChatColor.RESET : ChatColor.getByChar(colour);
+    }
+
 
 }
