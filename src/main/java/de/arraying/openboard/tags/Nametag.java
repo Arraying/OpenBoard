@@ -72,7 +72,6 @@ final class Nametag {
         }
         team.setPrefix(prefix);
         team.setSuffix(suffix);
-        team.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.ALWAYS);
         if(Bukkit.getVersion().contains("1.13")) {
             team.setColor(fromPrefix(prefix));
         }
