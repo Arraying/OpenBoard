@@ -29,6 +29,7 @@ final class Nametag {
     private final String name;
     private final String prefix;
     private final String suffix;
+    private Boolean isAfterIncluding13;
 
     /**
      * Creates a new nametag.
@@ -72,7 +73,7 @@ final class Nametag {
         }
         team.setPrefix(prefix);
         team.setSuffix(suffix);
-        if(Bukkit.getVersion().contains("1.13")) {
+        if(isAfterIncluding13()) {
             team.setColor(fromPrefix(prefix));
         }
         team.addEntry(target.getName());
@@ -109,5 +110,23 @@ final class Nametag {
         return colour == 0 ? ChatColor.RESET : ChatColor.getByChar(colour);
     }
 
+    /**
+     * Checks whether the version is at least 1.13.
+     * @return True if it is, false otherwise.
+     */
+    public boolean isAfterIncluding13() {
+        if (isAfterIncluding13 != null) {
+            return isAfterIncluding13;
+        }
+        String version = Bukkit.getVersion();
+        String[] parts = version.split("\\.");
+        try {
+            int major = Integer.parseInt(parts[1].replace("\\D", ""));
+            isAfterIncluding13 = major >= 13;
+            return isAfterIncluding13;
+        } catch(IllegalArgumentException exception) {
+            return false;
+        }
+    }
 
 }
