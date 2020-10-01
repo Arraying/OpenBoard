@@ -1,5 +1,6 @@
 package de.arraying.openboard.tags;
 
+import de.arraying.openboard.MinecraftVersion;
 import de.arraying.openboard.OpenBoard;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -72,7 +73,7 @@ final class Nametag {
         }
         team.setPrefix(prefix);
         team.setSuffix(suffix);
-        if(Bukkit.getVersion().contains("1.13")) {
+        if(MinecraftVersion.atLeast(MinecraftVersion.V.v1_13)) {
             team.setColor(fromPrefix(prefix));
         }
         team.addEntry(target.getName());
